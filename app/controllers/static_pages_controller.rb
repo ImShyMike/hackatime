@@ -222,9 +222,6 @@ class StaticPagesController < ApplicationController
           result[filter] = group_by_time.sort_by { |k, v| v }
                                         .reverse.map(&:first)
                                         .compact_blank
-                                        .map do |k, v|
-              [ %i[language category project].include?(filter) ? k : k.capitalize, v ]
-            end
 
           if params[filter].present?
             filter_arr = params[filter].split(",")
